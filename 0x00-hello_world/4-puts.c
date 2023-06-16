@@ -1,7 +1,14 @@
 #include <stdio.h>
 
+/**
+ * main - Entry point
+ * Description: 'the program's description'r
+ * Return: Always 0 (Success)
+*/
 int main(void)
 {
-	int retval = puts("\"Programming is like building a multilingual puzzle");
-	return (retval);
+	puts("\"Programming is like building a multilingual puzzle");
+
+	return (0);
 }
+

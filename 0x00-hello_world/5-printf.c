@@ -1,9 +1,16 @@
 #include <stdio.h>
-/*
- * Hello man
+/**
+ * main - Entry point
+ * Description: 'Main function'
+ * Return: 0
 */
+
 int main(void)
 {
-	int retval = printf("with proper grammar, but the outcome is a piece of art,\n");
-	return (retval);
+
+	int v = printf("with proper grammar, but the outcome is a piece of art,\n");
+
+	return (v);
+
 }
+
