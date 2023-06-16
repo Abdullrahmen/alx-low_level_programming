@@ -12,13 +12,19 @@ int main(void)
 	int i;
 	int k;
 
+	i = 0;
+
 	for (i = 0; i < 10; ++i)
 	{
-		for (n = 0; n < 9; ++n)
+		n = 0;
+		k = n + 1;
+		p = i;
+
+		for (; n < 10; ++n, k = n + 1, p = i)
 		{
-			for (p = i; p < 10; ++p)
+			for (; p < 10; k = 0, ++p)
 			{
-				for (k = n + 1; k < 10; ++k)
+				for (; k < 10; ++k)
 				{
 					putchar(i + 48);
 					putchar(n + 48);
@@ -30,12 +36,15 @@ int main(void)
 						putchar(44);
 						putchar(32);
 					}
+					else
+					{
+						putchar(10);
+						return (0);
+					}
 				}
 			}
 		}
 	}
-
-	putchar(10);
 	return (0);
 }
 
