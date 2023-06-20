@@ -12,7 +12,7 @@ int main(void)
 
 	last_2[0] = 1;
 	last_2[1] = 2;
-	size += 2;
+	size += 1;
 	printf("1, 2, ");
 	while (size <= 50)
 	{
