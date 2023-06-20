@@ -1,29 +1,16 @@
 #include <stdio.h>
 /**
-* multiples - Compute the multiples of n till e
-* @n The basic number
-* @e The maximum number excluded
-* Return: The sum of the multiples
-*/
-int multiples(int n, int e)
-{
-	int i = 0, s = 0;
-
-	while (i < e)
-	{
-		s += i;
-		i += n;
-	}
-	return (s);
-}
-
-/**
-* main - Main function
-* Return - always 0
-*/
+  * main - computes and prints the sum of all the multiples of
+  * 3 or 5 below 1024.
+  * Return: Nothing.
+ */
 int main(void)
 {
-	printf("%i\n", (multiples(3, 1024) + multiples(5, 1024)));
+	int i, res;
+
+	for (i = 0; i < 1024; i++)
+		if (i % 3 == 0 || i % 5 == 0)
+			res += i;
+	printf("%i\n", res);
 	return (0);
 }
-
