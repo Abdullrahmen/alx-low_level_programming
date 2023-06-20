@@ -17,9 +17,11 @@ int main(void)
 	while (size <= 50)
 	{
 		tmp = last_2[0] + last_2[1];
+		printf("%ld", tmp);
+
 		last_2[0] = last_2[1];
 		last_2[1] = tmp;
-		printf("%lo", tmp);
+
 		if (size != 50)
 			printf(", ");
 		++size;
