@@ -1,4 +1,3 @@
-
 /**
  * *_strstr - locates a substring
  * @haystack: string to search in
@@ -9,19 +8,18 @@
  */
 char *_strstr(char *haystack, char *needle)
 {
-	char *it, *it2;
+	int i, j;
 
-	for (; *haystack != '\0'; ++haystack)
-		if (*haystack == *needle)
+	for (i = 0; haystack[i] != '\0'; i++)
+	{
+		for (j = 0; needle[j] != '\0'; j++)
 		{
-			for (it = needle, it2 = haystack; *it; ++it, ++it2)
-				if (*it != *it2)
-					break;
-
-			if (!*it)
-				return (haystack);
+			if (haystack[i + j] != needle[j])
+				break;
 		}
-
-	return (0);
+		if (!needle[j])
+			return (&haystack[i]);
+	}
+	return (NULL);
 }
 
