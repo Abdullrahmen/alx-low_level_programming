@@ -18,7 +18,8 @@ char *_strstr(char *haystack, char *needle)
 			for (it = needle, it2 = haystack; *it != '\0'; ++it, ++it2)
 				if (*it != *it2)
 					break;
-			if (*it == '\0')
+
+			if (! *it)
 				return (haystack);
 		}
 
