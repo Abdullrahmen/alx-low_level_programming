@@ -19,7 +19,7 @@ char *_strstr(char *haystack, char *needle)
 				if (*it != *it2)
 					break;
 
-			if (! *it)
+			if (!*it)
 				return (haystack);
 		}
 
