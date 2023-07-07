@@ -8,17 +8,25 @@
  */
 int _atoi(char *s)
 {
-	int result = 0, i = 0, j = 0, k = 1;
-	char *iter;
+	int result = 0, i = 0, j = 0, k = 1, d = 0;
+	char *iter, *iter2;
 
-	iter = s;
+	iter2 = s;
+	while (*iter2 == '-' || *iter2 == '+')
+	{
+		if (*iter2 == '-')
+			++d;
+		++iter2;
+	}
+
+	iter = iter2;
 	while (*iter)
 	{
 		++iter;
 		++i;
 	}
 
-	iter = s;
+	iter = iter2;
 	while (i)
 	{
 		for (j = 0, k = 1; j < i - 1; ++j)
@@ -28,6 +36,10 @@ int _atoi(char *s)
 		--i;
 		++iter;
 	}
+
+	if (d % 2 == 1)
+		return (result * -1);
+
 	return (result);
 }
 
