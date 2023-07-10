@@ -1,5 +1,5 @@
 #include <stdlib.h>
-#include <stdio.h>
+
 /**
   *argstostr - concatenates all arguments of the program.
   *@ac: argument count.
@@ -24,7 +24,7 @@ char *argstostr(int ac, char **av)
 			++j;
 		}
 	}
-	len += ac; /* \n * ac - 1 + null char */
+	len += ac - 1; /* \n * ac - 1 */
 
 	str = malloc(sizeof(*str) * len);
 	if (str == NULL)
@@ -43,7 +43,6 @@ char *argstostr(int ac, char **av)
 		*iter = '\n';
 		++iter;
 	}
-	*iter = '\0';
 	return (str);
 }
 
