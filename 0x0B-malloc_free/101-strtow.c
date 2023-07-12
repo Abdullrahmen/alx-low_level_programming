@@ -1,49 +1,77 @@
 #include <stdlib.h>
+
+/**
+ * count_word - helper function to count the number of words in a string
+ * @s: string to evaluate
+ *
+ * Return: number of words
+ */
+int count_word(char *s)
+{
+	int flag, c, w;
+
+	flag = 0;
+	w = 0;
+
+	for (c = 0; s[c] != '\0'; c++)
+	{
+		if (s[c] == ' ')
+			flag = 0;
+		else if (flag == 0)
+		{
+			flag = 1;
+			w++;
+		}
+	}
+
+	return (w);
+}
 /**
  * **strtow - splits a string into words
  * @str: string to split
+ *
  * Return: pointer to an array of strings (Success)
  * or NULL (Error)
  */
 char **strtow(char *str)
 {
-	char **words;
-	unsigned int i = 0, j = 0, k = 0, len = 0, n_spaces = 0;
+	char **matrix, *tmp;
+	int i, k = 0, len = 0, words, c = 0, start, end;
 
-	if (str == NULL || str[0] == '\0')
+	while (*(str + len))
+		len++;
+	words = count_word(str);
+	if (words == 0)
 		return (NULL);
-	while (str[len])
-		if (str[len++] == ' ')
-			++n_spaces;
-	words = malloc(sizeof(*words) * (n_spaces + 1));
-	if (words == NULL)
+
+	matrix = (char **) malloc(sizeof(char *) * (words + 1));
+	if (matrix == NULL)
 		return (NULL);
-	n_spaces = 0;
-	while (str[i] == ' ')
-		++i;
-	j = i; /* begin of a words */
-	while (str[i++])
-		if (str[i] == ' ')
+
+	for (i = 0; i <= len; i++)
+	{
+		if (str[i] == ' ' || str[i] == '\0')
 		{
-			if (str[i + 1] == ' ')
+			if (c)
 			{
-				++k;
-				continue;
+				end = i;
+				tmp = (char *) malloc(sizeof(char) * (c + 1));
+				if (tmp == NULL)
+					return (NULL);
+				while (start < end)
+					*tmp++ = str[start++];
+				*tmp = '\0';
+				matrix[k] = tmp - c;
+				k++;
+				c = 0;
 			}
-			words[n_spaces] = malloc(sizeof(**words) * (i - j - k));
-			if (words[n_spaces] == NULL)
-			{
-				for (i = 0; i < n_spaces; ++i)
-					free(words[i]);
-				free(words);
-				return (NULL);
-			}
-			for (len = 0; len < (i - j - k); ++len)
-				words[n_spaces][len] = str[j + len];
-			++n_spaces; /* number of spaces (n_words - 1) */
-			j = i + 1; /* begin of a word */
-			k = 0; /* number of repeated spaces */
 		}
-	return (words);
+		else if (c++ == 0)
+			start = i;
+	}
+
+	matrix[k] = NULL;
+
+	return (matrix);
 }
 
