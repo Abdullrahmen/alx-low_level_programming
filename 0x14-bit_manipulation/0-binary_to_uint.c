@@ -8,7 +8,7 @@
 */
 unsigned int u_pow(unsigned int const n, unsigned int const p)
 {
-	unsigned i = 0, j;
+	unsigned int i = 0, j;
 
 	if (p == 0)
 		return (1);
@@ -26,6 +26,9 @@ unsigned int u_pow(unsigned int const n, unsigned int const p)
 unsigned int binary_to_uint(const char *b)
 {
 	unsigned int i = 0, j = 0, len = 0;
+
+	if (!b)
+		return (0);
 
 	while (b[len])
 		++len;
