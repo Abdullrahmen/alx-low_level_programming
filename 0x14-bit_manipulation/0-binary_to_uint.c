@@ -25,24 +25,21 @@ unsigned int u_pow(unsigned int const n, unsigned int const p)
 */
 unsigned int binary_to_uint(const char *b)
 {
-	unsigned int i = 0, j = 0, len = 0;
+	unsigned int total, power;
+	int len;
 
-	if (!b)
+	if (b == NULL)
 		return (0);
 
-	while (b[len])
-		++len;
+	for (len = 0; b[len]; len++)
+		if (b[len] != '0' && b[len] != '1')
+			return (0);
 
-	while (b[len - j - 1] == '0' || b[len - j - 1] == '1')
-	{
-		if (b[len - j - 1] == '1')
-			i += u_pow(2, j);
-		++j;
-		if (j == len)
-			break;
-	}
-	if (j != len)
-		return (0);
-	return (i);
+	--len;
+	for (power = 1, total = 0; len >= 0; len--, power *= 2)
+		if (b[len] == '1')
+			total += power;
+
+	return (total);
 }
 
