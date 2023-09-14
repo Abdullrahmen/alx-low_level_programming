@@ -17,10 +17,8 @@ void free_dlistint(dlistint_t *head)
 	while (head->next)
 	{
 		iter = head->next;
-		free(head->n);
 		free(head);
 		head = iter;
 	}
-	free(head->n);
 	free(head);
 }
